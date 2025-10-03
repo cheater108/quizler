@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { poppins } from "@/lib/fonts"
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -9,7 +10,9 @@ export default function Home() {
       </h1>
       <p className="mt-2">Create your own quiz or take one right now.</p>
       <div className="flex gap-4 mt-4">
-        <Button>Create Quiz</Button>
+        <Button>
+          <Link href={'/create'}>Create Quiz</Link>
+        </Button>
         <Button variant={'outline'}>Take Quiz</Button>
       </div>
     </main>
