@@ -1,3 +1,4 @@
+import { ICreateQuizHeaderProps, IQuizInfo } from "@/@types/type"
 import { Input } from "@/components/ui/input"
 import {
   Select,
@@ -8,13 +9,20 @@ import {
   SelectLabel,
   SelectItem
 } from "@/components/ui/select"
-const QuizHeader = () => {
+import { ChangeEvent } from "react";
+const QuizHeader = ({ quiz, changeInfo }: ICreateQuizHeaderProps) => {
+  const { name, quizName, topic } = quiz;
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    changeInfo(e.target.name as keyof IQuizInfo, e.target.value);
+  }
+
   return (
     <>
-      <Input placeholder="your name" />
+      <Input name="name" placeholder="your name" value={name} onChange={handleChange} />
       <div className="flex gap-4">
-        <Input placeholder="Quiz name" />
-        <Select>
+        <Input name="quizName" placeholder="Quiz name" value={quizName} onChange={handleChange} />
+        <Select value={topic} onValueChange={(value) => changeInfo('topic', value as "" | "math" | "science" | "general" | "others")}>
           <SelectTrigger className="w-1/2">
             <SelectValue placeholder='select a topic' />
           </SelectTrigger>

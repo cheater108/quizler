@@ -4,6 +4,7 @@ export const quizInfoInitial: IQuizInfo = {
 	name: "",
 	quizName: "",
 	topic: "",
+	time: "5",
 };
 
 export const emptyQuestion: IQuestion = {
