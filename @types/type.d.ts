@@ -1,3 +1,5 @@
+import { Document } from "mongoose";
+
 export interface IQuizInfo {
 	name: string;
 	quizName: string;
@@ -24,4 +26,8 @@ export interface ICreateQuestProps {
 export interface ICreateQuizHeaderProps {
 	quiz: IQuizInfo;
 	changeInfo: <K extends keyof IQuizInfo>(key: K, value: IQuizInfo[K]) => void;
+}
+
+export interface IQuiz extends IQuizInfo, Document {
+	questions: IQuestion[];
 }
