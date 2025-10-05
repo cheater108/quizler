@@ -8,6 +8,7 @@ import { FormEvent, useState } from "react"
 import { emptyQuestion, questionsInitial, quizInfoInitial } from "@/lib/initialStates"
 import { IQuestion, IQuizInfo } from "@/@types/type";
 import { ButtonGroup, ButtonGroupSeparator } from "@/components/ui/button-group";
+import { postQuiz } from "@/lib/actions";
 
 const Create = () => {
   const [quizInfo, setQuizInfo] = useState(quizInfoInitial);
@@ -42,8 +43,15 @@ const Create = () => {
     setQuizInfo({ ...quizInfo, [key]: value })
   }
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const { success, error } = await postQuiz({ ...quizInfo, questions })
+    if (success) {
+      console.log("Successfully added quiz:")
+    }
+    else {
+      console.log(error)
+    }
   }
 
   return (
@@ -76,7 +84,7 @@ const Create = () => {
           ))}
           <div className="flex gap-4">
             <Button className="flex-1" variant="outline" type="button" onClick={addQuestion}>Add Question</Button>
-            <Button className="flex-1" type="button" onClick={addQuestion}>Submit Quiz</Button>
+            <Button className="flex-1" type="submit">Submit Quiz</Button>
           </div>
         </form>
       </section>

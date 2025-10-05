@@ -23,6 +23,6 @@ const QuizSchema = new Schema<IQuiz>({
 	questions: { type: [QuestionSchema], required: true },
 });
 
-const QuizModel = mongoose.model<IQuiz>("Quiz", QuizSchema);
+const QuizModel = mongoose.models.Quiz || mongoose.model<IQuiz>("Quiz", QuizSchema);
 
 export default QuizModel;

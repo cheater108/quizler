@@ -13,7 +13,9 @@ export default function Home() {
         <Button>
           <Link href={'/create'}>Create Quiz</Link>
         </Button>
-        <Button variant={'outline'}>Take Quiz</Button>
+        <Button variant={'outline'}>
+          <Link href={'/take'}>Take Quiz</Link>
+        </Button>
       </div>
     </main>
   );

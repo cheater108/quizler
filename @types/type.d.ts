@@ -31,3 +31,7 @@ export interface ICreateQuizHeaderProps {
 export interface IQuiz extends IQuizInfo, Document {
 	questions: IQuestion[];
 }
+
+export interface IQuizData extends IQuizInfo {
+	questions: IQuestion[];
+}

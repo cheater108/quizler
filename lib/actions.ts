@@ -1,19 +1,19 @@
 "use server";
 import QuizModel from "@/db/quizSchema";
 import dbConnect from "@/db/db";
-import { IQuiz } from "@/@types/type";
+import { IQuiz, IQuizData } from "@/@types/type";
 
 /**
  * Server action to create a new quiz
  * @param quizData - The quiz data to be saved
  * @returns The created quiz document or error
  */
-export async function postQuiz(quizData: IQuiz) {
+export async function postQuiz(quizData: IQuizData) {
 	try {
 		await dbConnect();
 		const quiz = new QuizModel(quizData);
 		const savedQuiz = await quiz.save();
-		return { success: true, data: savedQuiz };
+		return { success: true };
 	} catch (error: any) {
 		return { success: false, error: error.message };
 	}

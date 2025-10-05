@@ -30,7 +30,7 @@ const QuizHeader = ({ quiz, changeInfo }: ICreateQuizHeaderProps) => {
             <SelectGroup>
               <SelectLabel>Topics</SelectLabel>
               <SelectItem value="math">Math</SelectItem>
-              <SelectItem value="Science">Science</SelectItem>
+              <SelectItem value="science">Science</SelectItem>
               <SelectItem value="general">General</SelectItem>
               <SelectItem value="others">Others</SelectItem>
             </SelectGroup>
