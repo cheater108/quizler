@@ -9,6 +9,8 @@ import { emptyQuestion, questionsInitial, quizInfoInitial } from "@/lib/initialS
 import { IQuestion, IQuizInfo } from "@/@types/type";
 import { ButtonGroup, ButtonGroupSeparator } from "@/components/ui/button-group";
 import { postQuiz } from "@/lib/actions";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 
 const Create = () => {
   const [quizInfo, setQuizInfo] = useState(quizInfoInitial);
@@ -58,9 +60,14 @@ const Create = () => {
     <main>
       <section className="p-4 m-auto md:w-1/2">
         <div className="flex justify-between items-center">
-          <h1 className={`${poppins.className} text-3xl text-center my-4`}>
-            Create your Quiz
-          </h1>
+          <div className="flex items-center gap-4">
+            <Link href='/'>
+              <Button className="rounded-full aspect-square"> <ArrowLeft /> </Button>
+            </Link>
+            <h1 className={`${poppins.className} text-3xl text-center my-4`}>
+              Create your Quiz
+            </h1>
+          </div>
           <ButtonGroup>
             <Button onClick={() => changeQuizInfo('time', '5')} variant={quizInfo.time == "5" ? 'default' : 'outline'}>
               5 mins
