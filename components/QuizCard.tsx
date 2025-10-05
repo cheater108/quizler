@@ -9,8 +9,9 @@ import {
 } from "./ui/card";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
+import Link from "next/link";
 
-const QuizCard = ({ quiz }: { quiz: IQuizInfo }) => {
+const QuizCard = ({ quiz, id }: { quiz: IQuizInfo, id: string }) => {
     const { name, quizName, topic, time } = quiz;
     return (
         <Card>
@@ -25,7 +26,9 @@ const QuizCard = ({ quiz }: { quiz: IQuizInfo }) => {
                 </CardDescription>
 
                 <CardAction>
-                    <Button>Take Quiz</Button>
+                    <Link href={`/take/${id}`}>
+                        <Button>Take Quiz</Button>
+                    </Link>
                 </CardAction>
             </CardHeader>
         </Card>

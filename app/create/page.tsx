@@ -57,45 +57,43 @@ const Create = () => {
   }
 
   return (
-    <main>
-      <section className="p-4 m-auto md:w-1/2">
-        <div className="flex justify-between items-center">
-          <div className="flex items-center gap-4">
-            <Link href='/'>
-              <Button className="rounded-full aspect-square"> <ArrowLeft /> </Button>
-            </Link>
-            <h1 className={`${poppins.className} text-3xl text-center my-4`}>
-              Create your Quiz
-            </h1>
-          </div>
-          <ButtonGroup>
-            <Button onClick={() => changeQuizInfo('time', '5')} variant={quizInfo.time == "5" ? 'default' : 'outline'}>
-              5 mins
-            </Button>
-            <ButtonGroupSeparator />
-            <Button onClick={() => changeQuizInfo('time', '10')} variant={quizInfo.time == "10" ? 'default' : 'outline'}>
-              10 mins
-            </Button>
-          </ButtonGroup>
+    <>
+      <div className="flex justify-between items-center">
+        <div className="flex items-center gap-4">
+          <Link href='/'>
+            <Button className="rounded-full aspect-square"> <ArrowLeft /> </Button>
+          </Link>
+          <h1 className={`${poppins.className} text-3xl text-center my-4`}>
+            Create your Quiz
+          </h1>
         </div>
-        <p>Add details to create your quiz.</p>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4 mt-4">
-          <QuizHeader quiz={quizInfo} changeInfo={changeQuizInfo} />
-          <Separator />
-          {questions.map((q, id) => (
-            <CreateQuestion
-              key={id}
-              ques={q}
-              deleteQues={deleteQuestion}
-              changeQues={changeQuestionField} />
-          ))}
-          <div className="flex gap-4">
-            <Button className="flex-1" variant="outline" type="button" onClick={addQuestion}>Add Question</Button>
-            <Button className="flex-1" type="submit">Submit Quiz</Button>
-          </div>
-        </form>
-      </section>
-    </main>
+        <ButtonGroup>
+          <Button onClick={() => changeQuizInfo('time', '5')} variant={quizInfo.time == "5" ? 'default' : 'outline'}>
+            5 mins
+          </Button>
+          <ButtonGroupSeparator />
+          <Button onClick={() => changeQuizInfo('time', '10')} variant={quizInfo.time == "10" ? 'default' : 'outline'}>
+            10 mins
+          </Button>
+        </ButtonGroup>
+      </div>
+      <p>Add details to create your quiz.</p>
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4 mt-4">
+        <QuizHeader quiz={quizInfo} changeInfo={changeQuizInfo} />
+        <Separator />
+        {questions.map((q, id) => (
+          <CreateQuestion
+            key={id}
+            ques={q}
+            deleteQues={deleteQuestion}
+            changeQues={changeQuestionField} />
+        ))}
+        <div className="flex gap-4">
+          <Button className="flex-1" variant="outline" type="button" onClick={addQuestion}>Add Question</Button>
+          <Button className="flex-1" type="submit">Submit Quiz</Button>
+        </div>
+      </form>
+    </>
   )
 }
 

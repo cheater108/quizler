@@ -8,28 +8,28 @@ import Link from "next/link";
 const Take = async () => {
   const { data, success } = await getAllQuizzes();
   return (
-    <main>
-      <section className="p-4 m-auto md:w-1/2">
-        <div className="flex gap-4 items-center">
-          <Link href='/'>
-            <Button className="rounded-full aspect-square"> <ArrowLeft /> </Button>
-          </Link>
-          <h1 className={`${poppins.className} text-3xl text-center my-4`}>
-            Take any quiz...
-          </h1>
-        </div>
-        <div className="flex flex-col gap-4">
-          {data?.map((q: IQuiz) => (
-            <QuizCard key={q.id} quiz={{
-              quizName: q.quizName,
-              name: q.name,
-              topic: q.topic,
-              time: q.time,
-            }} />
-          ))}
-        </div>
-      </section>
-    </main>
+    <>
+      <div className="flex gap-4 items-center">
+        <Link href='/'>
+          <Button className="rounded-full aspect-square"> <ArrowLeft /> </Button>
+        </Link>
+        <h1 className={`${poppins.className} text-3xl text-center my-4`}>
+          Take any quiz...
+        </h1>
+      </div>
+      <div className="flex flex-col gap-4">
+        {data?.map((q: IQuiz) => (
+          <QuizCard key={q.id} quiz={{
+            quizName: q.quizName,
+            name: q.name,
+            topic: q.topic,
+            time: q.time,
+          }}
+            id={q.id}
+          />
+        ))}
+      </div>
+    </>
   )
 }
 
