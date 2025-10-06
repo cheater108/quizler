@@ -11,10 +11,12 @@ import { ButtonGroup, ButtonGroupSeparator } from "@/components/ui/button-group"
 import { postQuiz } from "@/lib/actions";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const Create = () => {
   const [quizInfo, setQuizInfo] = useState(quizInfoInitial);
   const [questions, setQuestions] = useState<IQuestion[]>(questionsInitial);
+  const router = useRouter();
 
   const addQuestion = () => {
     const newQuestion: IQuestion = {
@@ -49,7 +51,7 @@ const Create = () => {
     e.preventDefault();
     const { success, error } = await postQuiz({ ...quizInfo, questions })
     if (success) {
-      console.log("Successfully added quiz:")
+      router.replace("/take")
     }
     else {
       console.log(error)

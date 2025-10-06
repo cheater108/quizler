@@ -18,7 +18,9 @@ const Take = async () => {
         </h1>
       </div>
       <div className="flex flex-col gap-4">
-        {data?.map((q: IQuiz) => (
+        {data?.length === 0 ? <p>
+          No quiz available, please create one.
+        </p> : data?.map((q: IQuiz) => (
           <QuizCard key={q.id} quiz={{
             quizName: q.quizName,
             name: q.name,

@@ -31,7 +31,7 @@ const CreateQuestion = ({ ques, deleteQues, changeQues }: ICreateQuestProps) => 
       <CardHeader>
         <div className="flex justify-between items-center mb-2">
           <CardTitle>Question #{questionNo}</CardTitle>
-          <Button onClick={() => deleteQues(questionNo)} variant="outline">Delete</Button>
+          <Button type="button" onClick={() => deleteQues(questionNo)} variant="outline">Delete</Button>
         </div>
         <CardDescription>
           <Input name="question" placeholder="Enter the question ?" value={question} onChange={handleChange} />
@@ -57,7 +57,7 @@ const CreateQuestion = ({ ques, deleteQues, changeQues }: ICreateQuestProps) => 
         <p>Select correct option</p>
         <div className="flex gap-2 w-full mt-2">
           {['A', 'B', 'C', 'D'].map((op) => (
-            <Button key={op} className="flex-1" variant={op === correct ? 'default' : 'outline'}
+            <Button key={op} className="flex-1" type="button" variant={op === correct ? 'default' : 'outline'}
               onClick={() => changeQues(questionNo, 'correct', op as 'A' | 'B' | 'C' | 'D')}
             >
               {op}
